@@ -13,7 +13,7 @@ then
 	sudo touch $GLITCHHSWAP
 	echo -e "options zram num_devices=1" | sudo tee  $GLITCHHSWAP
 	sudo touch $ZRULE
-	echo KERNEL=="zram0", ATTR{disksize}="16G",TAG+="systemd" | sudo tee  $ZRULE
+	echo KERNEL== '"zram0", ATTR{disksize}="16G",TAG+="systemd"' | sudo tee  $ZRULE
 	sudo sed -e '/swap/s/^/#/g' -i /etc/fstab
 	sudo systemctl enable --now zram
 
@@ -24,7 +24,7 @@ else
   sudo touch $GLITCHHSWAP
   echo -e "options zram num_devices=1" | sudo tee  $GLITCHHSWAP
   sudo touch $ZRULE
-  echo KERNEL=="zram0", ATTR{disksize}="16G",TAG+="systemd" | sudo tee  $ZRULE
+	echo KERNEL== '"zram0", ATTR{disksize}="16G",TAG+="systemd"' | sudo tee  $ZRULE
   sudo sed -e '/swap/s/^/#/g' -i /etc/fstab
   sudo systemctl enable --now zram
 fi
